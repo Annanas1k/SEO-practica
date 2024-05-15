@@ -7,42 +7,108 @@
         <link rel="icon" href="{{ asset('assets/img/icon.png') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
         <script src="https://kit.fontawesome.com/f51865d827.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     {% endblock %}
 </head>
-<body>
-<header>
-    {% block header %}
-        <div class="header-container">
-            <div class="first-row">
-                <a class="first-row-text">
-                    <i class="fa-regular fa-envelope"></i>
-                    support@company.com
-                </a>
-                <a class="first-row-text">
-                    <i class="fa-solid fa-phone-volume"></i>
-                    +(1) 123 456 7890
-                </a>
-                <a class="first-row-text">
-                    <i class="fa-solid fa-headset"></i>
-                    Support & FAQs
-                </a>
-            </div>
+
+{% block navbar %}
+<body id="page-top" class="index" data-pinterest-extension-installed="cr1.3.4">
+
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <a class="navbar-brand page-scroll" href="#page-top">Celine Is Awesome</a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
         </div>
-    {% endblock %}
-</header>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hidden active">
+                    <a href="#page-top"></a>
+                </li>
+                <li class="">
+                    <a class="page-scroll" href="#">Services</a>
+                </li>
+                <li class="">
+                    <a class="page-scroll" href="#portfolio">Portfolio</a>
+                </li>
+                <li class="">
+                    <a class="page-scroll" href="#about">About</a>
+                </li>
+                <li class="">
+                    <a class="page-scroll" href="#team">Team</a>
+                </li>
+                <li class="">
+                    <a class="page-scroll" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+{% endblock %}
 
 {% block body %}{% endblock %}
 
-<footer>
-    {% block footer %}
-        <div class="footer-content">
-            <p>&copy; 2024 My Website</p>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </div>    {% endblock %}
-</footer>
+
+{%  include 'header/index.html.twig'%}
+
+{%  include 'servicies/index.html.twig' %}
+
+
+{% block footer %}
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">Copyright © Your Website 2014</span>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li><a href="#">Privacy Policy</a>
+                        </li>
+                        <li><a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+{% endblock %}
+
+<script src="{{ asset('assets/js/script.js') }}"></script>
+<!-- jQuery Version 1.11.0 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/classie/1.0.1/classie.min.js"></script>
+{#<script src="https://cdnjs.cloudflare.com/ajax/libs/cbpAnimatedHeader/1.0.0/cbpAnimatedHeader.min.js"></script>#}
+
 </body>
 </html>
