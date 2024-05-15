@@ -6,3 +6,28 @@ controllers:
 
 app_images:
     path: /assets/img/{filename}
+
+app_home:
+    path: /home
+    controller: App\Controller\HomeController::index
+
+app_about:
+    path: /aboutus
+    controller: App\Controller\AboutUsController::index
+
+app_servicies:
+    path: /servicies
+    controller: App\Controller\ServiciesController::index
+
+app_prices:
+    path: /prices
+    controller: App\Controller\PricesController::index
+
+app_our_projects:
+    path: /projects
+    controller: App\Controller\OurProjectsController::index
+
+app_contact_us:
+    path: /contact
+    controller: App\Controller\ContactUsController::index
+
