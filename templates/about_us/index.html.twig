@@ -2,19 +2,56 @@
 
 {% block title %} {{ parent() }} - About Us{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+{% block body %}<style>
+    .about-section {
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+
+    h2 {
+        font-weight: bold;
+    }
+    p {
+        font-weight: bold;
+    }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <section class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="about-content">
+                        <h2>About Us</h2>
+                        <p>As soon as you have your own website, your main goal will be to attract visitors and increase the traffic to this online resource. Unfortunately, many clients, when ordering the creation of a website, overlook the fact that the chosen studio deals exclusively with the technical side of the issue and does not provide website management services. The Digital Marketing company SEMSEO SRL will not allow this oversight to hinder the realization of your desires and the implementation of business plans. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="about-content">
+                        <p>Our company not only offers website management and promotion services but also helps simplify your task in finding qualified professionals for the development, monitoring, and technical maintenance of your site. We also provide sales and integration of CRM.MD, integration with AmoCRM, website audits, and installation and configuration of conversion tools like Marquiz and Proofdy.
+                            <br><br>
+                            «SEMSEO» organizes complete website administration with its subsequent promotion in search engines and daily increase in site traffic. Rectifying any shortcomings made by the developers of your project is also within our responsibilities. If we take on your website, our goal is to make it flawless; tolerating imperfections is not within our competence.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="about-image text-center">
+                        <img src="/assets/img/about.png" class="img-fluid" alt="About Us Image">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="about-content">
+                        <p>We provide only top-class services. However, it’s important to remember that no matter how high-quality your website is, without a properly planned advertising strategy, chances are no one will get to know about it.
+                            <br><br>
+                            «SEMSEO» has vast professional experience in the field of promoting and advancing websites on the internet. As years of practice have shown, about 90% of the success of any online business is attributed to the professional work of internet marketers. Promoting a business online is a labor-intensive process. It requires not only the application of the same amount of effort as opening a standard enterprise but often exceeds it in terms of complexity. Avoiding unforeseen difficulties is possible only if you entrust your project to specialists.
+                            <br><br>
+                            SEO website optimization , targeted advertising, contextual advertising on Google, website administration and audits, CRM integration  or AmoCRM integration  – these are just a few of the many services offered by our IT company in Moldova. We will transform your website into a fully operational mechanism that will generate real income for its owner.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/donradisimo/PhpstormProjects/SEO-practica/src/Controller/AboutUsController.php</code></li>
-        <li>Your template at <code>/home/donradisimo/PhpstormProjects/SEO-practica/templates/about_us/index.html.twig</code></li>
-    </ul>
-</div>
 {% endblock %}
