@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - Servicies {% endblock %}
+
+{% block body %}
+    <style>
+
+    </style>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <ul class="list-group">
+                    {% for service in services %}
+                        <li class="list-group-item {% if selectedService and selectedService.name == service.name %}active{% endif %}">
+                            <a href="{{ path('service_detail', {'slug': service.slug}) }}">{{ service.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-md-9">
+                {% if selectedService %}
+                    <h1>{{ selectedService.name }}</h1>
+                    <p>{{ selectedService.description }}</p>
+                {% else %}
+                    <h1>Our Services</h1>
+                    <p>Select a service from the left to see details.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
