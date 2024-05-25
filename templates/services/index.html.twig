@@ -1,32 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent() }} - Servicies {% endblock %}
+{% block title %}{{ parent() }} - Services {% endblock %}
 
 {% block body %}
     <style>
+        .list-group {
+            background-color: #ffffff;
+            box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.1);
+        }
 
+        .list-group-item {
+            border: none;
+            padding: 4px 16px;
+            background-color: whitesmoke;
+        }
+
+        .list-group-item a {
+            color: #000000;
+        }
+
+        .list-group-item.active a {
+            color: #ff0000;
+            font-weight: bold;
+        }
+
+        .list-group-item.active {
+            background-color: lightgray;
+        }
     </style>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <ul class="list-group">
-                    {% for service in services %}
-                        <li class="list-group-item {% if selectedService and selectedService.name == service.name %}active{% endif %}">
-                            <a href="{{ path('service_detail', {'slug': service.slug}) }}">{{ service.name }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="col-md-9">
-                {% if selectedService %}
-                    <h1>{{ selectedService.name }}</h1>
-                    <p>{{ selectedService.description }}</p>
-                {% else %}
-                    <h1>Our Services</h1>
-                    <p>Select a service from the left to see details.</p>
-                {% endif %}
+        <div class="container" style="margin-top: 100px; margin-bottom: 100px;">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul class="list-group" >
+                        {% for service in services %}
+                            <li class="list-group-item {% if selectedService and selectedService.name == service.name %}active{% endif %}"  >
+                                <a href="{{ path('service_detail', {'slug': service.slug}) }}">{{ service.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-md-9">
+                    {% if selectedService %}
+                        <h1 style="font-weight: bold">{{ selectedService.name }}</h1>
+                        <p>{{ selectedService.description }}</p>
+                    {% else %}
+                        <h1>Our Services</h1>
+                        <p>Select a service from the left to see details.</p>
+                    {% endif %}
+                </div>
             </div>
         </div>
-    </div>
 {% endblock %}

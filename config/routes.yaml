@@ -16,7 +16,7 @@ app_about:
     controller: App\Controller\AboutUsController::index
 
 app_servicies:
-    path: /servicies
+    path: /services
     controller: App\Controller\ServiciesController::index
 
 app_prices:
