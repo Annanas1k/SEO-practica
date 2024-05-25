@@ -3,18 +3,39 @@
 {% block title %}{{ parent() }} - Prices{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    </style>
+    <h1 class="text-center" style="margin-top: 100px">Prices</h1>
+    <div class="categories text-center justify-content-center" >
+        <ul class="nav nav-pills navbar-center">
+            {% for category in categories %}
+                <li class="nav-item"><a class="nav-link" href="#{{ category }}">{{ category }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/donradisimo/PhpstormProjects/SEO-practica/src/Controller/PricesController.php</code></li>
-        <li>Your template at <code>/home/donradisimo/PhpstormProjects/SEO-practica/templates/prices/index.html.twig</code></li>
-    </ul>
-</div>
+    <div class="container mt-5">
+        {% for category in categories %}
+            <h2 id="{{ category }}" class="text-center" style="margin-top: 50px">{{ category }}</h2>
+            <div class="row justify-content-center mt-5">
+                {% for price in prices %}
+                    {% if price.category == category %}
+                        <div class="col-md-4 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h3 class="card-title">{{ price.name }}</h3>
+                                    <p class="card-text">
+                                        <textarea class="form-control" rows="4">{{ price.description }}</textarea>
+                                    </p>
+                                    <p class="card-text">Price: {{ price.price }} / {{ price.unit }}</p>
+                                    <button class="btn btn-primary">Order</button>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
