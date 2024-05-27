@@ -4,32 +4,50 @@
 
 {% block body %}
     <style>
+        .navbar-center {
+            display: flex;
+            justify-content: center;
+        }
 
+        .nav-link {
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-link.active {
+            background-color: #e74c3c !important;
+            color: white !important;
+        }
+
+        .categories {
+            margin-bottom: 20px;
+        }
     </style>
-    <h1 class="text-center" style="margin-top: 100px">Prices</h1>
-    <div class="categories text-center justify-content-center" >
-        <ul class="nav nav-pills navbar-center">
+    <div>
+    <h1 class="text-center" style="margin-top: 50px">Prices</h1>
+    <div class="categories text-center justify-content-center" style="display: flex; justify-content: center;" >
+        <ul class="nav nav-pills navbar-center" style="width: 70%;">
+            <li class="nav-item"><a class="nav-link active" href="#all">All</a></li> {# Adăugăm un element pentru a afișa toate categoriile #}
             {% for category in categories %}
-                <li class="nav-item"><a class="nav-link" href="#{{ category }}">{{ category }}</a></li>
+                <li class="nav-item"><a class="nav-link nav-linkk" href="#{{ category }}">{{ category }}</a></li>
             {% endfor %}
         </ul>
     </div>
+    </div>
 
-    <div class="container mt-5">
+    <div class="container mt-4" style="background-color: white; padding: 20px 20px; box-shadow: 2px 3px 15px 2px lightgray; margin-bottom: 100px; margin-top: 100px;">
         {% for category in categories %}
-            <h2 id="{{ category }}" class="text-center" style="margin-top: 50px">{{ category }}</h2>
-            <div class="row justify-content-center mt-5">
+            <div class="row justify-content-center mt-4 category" id="{{ category }}">
                 {% for price in prices %}
-                    {% if price.category == category %}
+                    {% if price.category == category or category == 'all' %} {# Verificăm dacă serviciul aparține categoriei curente sau dacă categoria este 'all' #}
                         <div class="col-md-4 mb-3">
                             <div class="card">
-                                <div class="card-body">
-                                    <h3 class="card-title">{{ price.name }}</h3>
+                                <div class="card-body" style="height: 350px">
+                                    <h3 class="card-title" style="font-weight: bold">{{ price.name }}</h3>
                                     <p class="card-text">
                                         <textarea class="form-control" rows="4">{{ price.description }}</textarea>
                                     </p>
-                                    <p class="card-text">Price: {{ price.price }} / {{ price.unit }}</p>
-                                    <button class="btn btn-primary">Order</button>
+                                    <p class="card-text" style="font-weight: bold">Price: {{ price.price }}$ / {{ price.unit }}</p>
+                                    <button class="btn btn-primary" style="background-color: #e74c3c; border: none">Order</button>
                                 </div>
                             </div>
                         </div>
@@ -38,4 +56,25 @@
             </div>
         {% endfor %}
     </div>
+
+    <script>
+        // Afișăm sau ascundem serviciile în funcție de categoria selectată
+        document.querySelectorAll('.nav-linkk').forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevenim comportamentul implicit al link-ului
+
+                // Ascundem toate categoriile și afișăm doar categoria selectată
+                document.querySelectorAll('.category').forEach(category => {
+                    category.style.display = 'none';
+                });
+                document.getElementById(this.getAttribute('href').substring(1)).style.display = 'flex';
+
+                // Eliminăm clasa "active" de pe toate link-urile și o adăugăm doar pe cel selectat
+                document.querySelectorAll('.nav-linkk').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+    </script>
 {% endblock %}
