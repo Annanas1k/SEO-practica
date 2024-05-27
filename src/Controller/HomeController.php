@@ -57,10 +57,14 @@ class HomeController extends AbstractController
             ]
 
         ];
-
+        $backUrl = "/assets/img/background_home.png";
+        $youtubeUrl = "https://www.youtube.com/embed/1VJenmt9LCk";
 
         return $this->render('home/index.html.twig', [
             'data' => $data,
+            'youtubeUrl' => $youtubeUrl,
+            'backUrl' => $backUrl,
         ]);
     }
+
 }

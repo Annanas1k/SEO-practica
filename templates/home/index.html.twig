@@ -19,9 +19,67 @@
         text-align: center;
     }
 
+    .par {
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    /* Stilizare pentru containerul video */
+
+
+    .video-container {
+        text-align: center;
+        background-color: lightgray;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 100%;
+        margin-bottom: 20px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    /* Stilizare pentru încadrarea videoclipului */
+    .video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%; /* Raportul 16:9 pentru videoclip */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+        border-radius: 10px;
+        margin: 0 auto;
+    }
+
+    /* Stilizare pentru iframe-ul videoclipului */
+    .video-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 10px;
+    }
+
+    .da {
+        width: 100%;
+        background-image: url("{{ backUrl }}");
+    }
+
+
+
 
 
 </style>
+    <div class="container da">
+        <div class="video-container mt-5 justify-content-center">
+            <div class="video-wrapper">
+                <iframe width="560" height="315" src="{{ youtubeUrl }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+
 
     <div class="container mt-5  service-container" style="margin-top: 50px; margin-bottom: 100px;">
         <h5 style="text-align: center; font-weight: bold; margin-top: 20px;" >ANY WEBSITE, WITH PROPER MANAGEMENT <br>
@@ -40,6 +98,26 @@
                     </div>
                 </div>
             {% endfor %}
+        </div>
+    </div>
+
+    <div class="container mt-5" style="margin-bottom: 100px;">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <h1><a href="{{ path('app_about') }}" style="color: #e74c3c; font-weight: bold;">ABOUT US</a></h1>
+            </div>
+        </div>
+
+        <div class="row justify-content-center align-items-center mt-4">
+            <div class="col-md-4">
+                <img src="/assets/img/google_partener.png" class="img-fluid" alt="About Us Image" style="width: 300px;">
+            </div>
+            <div class="col-md-4">
+                <p class="par">SEMSEO has been operating in the Moldovan market since 2012. Its main specialization includes SEO optimization of websites and managing contextual advertising in Google Adwords. Other services provided are website development and maintenance, design and layout, content writing and translations, technical work of any kind on websites, CRM integration, and the development of marketing tools to increase conversions, as well as audits and reports.</p>
+            </div>
+            <div class="col-md-4">
+                <p class="par">We take pride in: Effectively optimizing and promoting all our clients' websites. Google Partner since 2013. Servicing and developing web solutions since 2014, for over 8 years, for Moldcell, FinComBank. Integrating Yclients, AmoCRM, and CRM.MD. Our own solutions: CRM.MD, Proofdy.io, SmartchatMD. Portfolio includes over 500 clients for maintenance, SEO, and other services.</p>
+            </div>
         </div>
     </div>
 
