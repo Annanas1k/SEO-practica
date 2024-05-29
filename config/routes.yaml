@@ -7,6 +7,9 @@ controllers:
 app_images:
     path: /assets/img/{filename}
 
+dashboard:
+    path: /admin
+    controller: App\Controller\Admin\DashboardController::index
 
 
 

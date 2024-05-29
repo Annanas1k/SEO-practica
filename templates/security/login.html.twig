@@ -1,25 +1,99 @@
-{# templates/security/login.html.twig #}
+<html>
+<title>
+    {% block title %}Log in!{% endblock %}
+</title>
+<link rel="icon" href="{{ asset('assets/img/SEMSEO_LOGO_SINGLE.png') }}">
 
-{% extends 'base.html.twig' %}
+</html>
+
+{% block stylesheets %}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin-top: 100px;
+        }
+        .login-card {
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .login-title {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .login-btn {
+            width: 100%;
+            background-color: #d9534f;
+            border-color: #d9534f;
+        }
+        .login-btn:hover {
+            background-color: #c9302c;
+            border-color: #ac2925;
+        }
+        .form-control {
+            border-color: #d9534f;
+        }
+        .form-control:focus {
+            border-color: #c9302c;
+            box-shadow: 0 0 0 0.2rem rgba(217, 83, 79, 0.25);
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 20px auto;
+            max-width: 200px;
+        }
+        .form-check-input:checked {
+            background-color: #d9534f; !important;
+            border-color: #d9534f;
+        }
+        .form-check-input:focus {
+            box-shadow: 0 0 0 0.2rem rgba(217, 83, 79, 0.25);
+        }
+
+    </style>
+{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h1 class="mt-5">Login</h1>
-        {% if error %}
-            <div class="alert alert-danger" role="alert">
-                {{ error.messageKey|trans(error.messageData, 'security') }}
+    <div class="container login-container">
+        <div class="card login-card">
+            <div class="card-body">
+                <img src="/assets/img/SEMSEO_LOGO.png" alt="Company Logo" class="logo">
+                <h1 class="h3 mb-3 font-weight-normal login-title">Please sign in</h1>
+                <form method="post">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                    {% if app.user %}
+                        <div class="mb-3">
+                            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                        </div>
+                    {% endif %}
+
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="username" required autofocus>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+                    </div>
+
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                    {# Uncomment this section and add a remember_me option below your firewall to activate remember me functionality. #}
+                    {# See https://symfony.com/doc/current/security/remember_me.html #}
+                     <div class="form-check mb-3">
+                        <input type="checkbox" class="form-check-input" name="_remember_me" id="remember_me">
+                        <label class="form-check-label" for="remember_me">Remember me</label>
+                    </div>
+
+                    <button class="btn btn-lg btn-primary login-btn" type="submit">
+                        Sign in
+                    </button>
+                </form>
             </div>
-        {% endif %}
-        <form method="post">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" required autofocus>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="_password" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
+        </div>
     </div>
 {% endblock %}
