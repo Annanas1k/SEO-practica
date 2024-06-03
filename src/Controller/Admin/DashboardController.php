@@ -2,6 +2,8 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Price;
+use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -54,10 +56,12 @@ class DashboardController extends AbstractDashboardController
         return [
             MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
             MenuItem::linkToRoute('Back to Home Page','fas fa-home', 'app_home'),
-            MenuItem::section('Blog'),
 
             MenuItem::section('Users'),
-//            MenuItem::linkToCrud('Users', 'fa fa-user', User::class),
+            MenuItem::linkToCrud('Users', 'fa fa-user', User::class),
+            MenuItem::section('Services'),
+            MenuItem::linkToCrud('Prices', 'fa fa-money', Price::class),
+
         ];
     }
 }
