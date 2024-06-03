@@ -53,7 +53,7 @@ class DashboardController extends AbstractDashboardController
     {
         return [
             MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
-
+            MenuItem::linkToRoute('Back to Home Page','fas fa-home', 'app_home'),
             MenuItem::section('Blog'),
 
             MenuItem::section('Users'),

@@ -1,0 +1,15 @@
+{# templates/mailer/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Mailer{% endblock %}
+
+{% block body %}
+
+    {% for label, messages in app.flashes %}
+        <div class="alert alert-{{ label }}">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}
