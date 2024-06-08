@@ -1,11 +1,32 @@
 {# templates/admin/my_dashboard.html.twig #}
 
-
 {% extends '@EasyAdmin/layout.html.twig' %}
 
-    {% block title %} SEO!{% endblock %}
+{% block title %}SEO!{% endblock %}
 
 {% block main %}
-    Admin page
-    {# ... #}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Welcome to the Admin Dashboard!</h2>
+                        <p class="card-subtitle mb-2 text-muted">Your Central Command Center for All Things Awesome</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Congratulations! You've just stepped into the realm of power and control. This is your sanctuary where you wield the tools to shape the destiny of your application.</p>
+                        <p class="card-text">With great power comes great responsibility. Fear not, for we're here to guide you through this journey of mastery.</p>
+                        <p class="card-text">Here are some of the marvelous feats you can accomplish from this mighty dashboard:</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Unleash your creativity with the power of <strong>Manage Users</strong>. Mold new accounts, shape permissions, and banish those who dare to disrupt the harmony of your realm.</li>
+                            <li class="list-group-item">Harness the forces of <strong>Manage Prices</strong>. Command the tides of commerce by setting prices, adjusting tariffs, and ensuring your coffers overflow with riches.</li>
+                            <li class="list-group-item">Embark on epic quests with <strong>Manage Projects</strong>. Explore uncharted territories, conquer new domains, and add your conquests to the annals of history.</li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
 {% endblock main %}

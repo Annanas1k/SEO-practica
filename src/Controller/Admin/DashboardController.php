@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Admin;
 use App\Entity\OurProjects;
 use App\Entity\Price;
 use App\Entity\User;
@@ -59,6 +60,7 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToRoute('Back to Home Page','fas fa-home', 'app_home'),
 
             MenuItem::section('Users'),
+            MenuItem::linkToCrud('Admins', 'fa fa-shield-halved', Admin::class),
             MenuItem::linkToCrud('Users', 'fa fa-user', User::class),
             MenuItem::section('Services'),
             MenuItem::linkToCrud('Prices', 'fa fa-money', Price::class),
