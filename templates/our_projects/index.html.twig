@@ -1,20 +1,75 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent() }} - Out Projects {% endblock %}
+{% block title %}{{ parent() }} - Our Projects {% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <style>
+        .navbar-center {
+            display: flex;
+            justify-content: center;
+        }
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        .nav-link {
+            transition: background-color 0.3s ease;
+        }
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/donradisimo/PhpstormProjects/SEO-practica/src/Controller/OurProjectsController.php</code></li>
-        <li>Your template at <code>/home/donradisimo/PhpstormProjects/SEO-practica/templates/our_projects/index.html.twig</code></li>
-    </ul>
-</div>
+        .nav-link.active {
+            background-color: #e74c3c !important;
+            color: white !important;
+        }
+
+        .categories {
+            margin-bottom: 20px;
+        }
+    </style>
+    <h1 class="text-center" style="margin-top: 50px">Our Projects</h1>
+    <div class="categories text-center justify-content-center" style="display: flex; justify-content: center;">
+        <ul class="nav nav-pills navbar-center" style="width: 70%;">
+            <li class="nav-item"><a class="nav-link active" href="#all">All</a></li> {# Adăugăm un element pentru a afișa toate tipurile #}
+            {% for type in types %}
+                <li class="nav-item"><a class="nav-link nav-linkk" href="#{{ type }}">{{ type }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="container mt-4" style="background-color: white; padding: 20px 20px; box-shadow: 2px 3px 15px 2px lightgray; margin-bottom: 100px; margin-top: 100px;">
+        {% for type in types %}
+            <div class="row justify-content-center mt-4 category" id="{{ type }}">
+                {% for project in projects %}
+                    {% if project.type == type or type == 'all' %}
+                        <div class="col-md-4 mb-3">
+                            <div class="card" style="padding: 15px;">
+                                <img src="{{ asset('images/' ~ project.img) }}" class="card-img-top" alt="{{ project.denummire }}">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center" style="font-weight: bold; color: #e74c3c">{{ project.denummire }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        // Afișăm sau ascundem proiectele în funcție de tipul selectat
+        document.querySelectorAll('.nav-linkk').forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevenim comportamentul implicit al link-ului
+
+                // Ascundem toate tipurile și afișăm doar tipul selectat
+                document.querySelectorAll('.category').forEach(category => {
+                    category.style.display = 'none';
+                });
+                document.getElementById(this.getAttribute('href').substring(1)).style.display = 'flex';
+
+                // Eliminăm clasa "active" de pe toate link-urile și o adăugăm doar pe cel selectat
+                document.querySelectorAll('.nav-linkk').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+    </script>
+
 {% endblock %}

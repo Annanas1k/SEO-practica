@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\OurProjects;
 use App\Entity\Price;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -61,6 +62,7 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Users', 'fa fa-user', User::class),
             MenuItem::section('Services'),
             MenuItem::linkToCrud('Prices', 'fa fa-money', Price::class),
+            MenuItem::linkToCrud('Our Projects', 'fa fa-diagram-project', OurProjects::class),
 
         ];
     }

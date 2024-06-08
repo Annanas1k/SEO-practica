@@ -28,4 +28,6 @@ class PricesController extends AbstractController
             'categories' => $categories,
         ]);
     }
+
+
 }
