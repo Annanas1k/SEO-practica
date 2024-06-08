@@ -14,11 +14,11 @@ dashboard:
 
 
 
-app_home:
-    path: /home
+homepage:
+    path: /
     controller: App\Controller\HomeController::index
 
-app_about:
+aboutpage:
     path: /aboutus
     controller: App\Controller\AboutUsController::index
 

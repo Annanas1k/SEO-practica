@@ -29,6 +29,15 @@
         .list-group-item.active {
             background-color: lightgray;
         }
+
+        span {
+            font-weight: bold;
+            color: red;
+        }
+        a {
+            font-weight: bold;
+            color: red;
+        }
     </style>
 
         <div class="container" style="margin-top: 100px; margin-bottom: 100px;">
@@ -47,8 +56,12 @@
                         <h1 style="font-weight: bold">{{ selectedService.name }}</h1>
                         <p>{{ selectedService.description }}</p>
                     {% else %}
-                        <h1>Our Services</h1>
-                        <p>Select a service from the left to see details.</p>
+                        <h1>Our SERVICES PROVIDED BY THE IT COMPANY SEMSEO
+                        </h1>
+                        <p>The <span>IT company SEMSEO in Moldova</span>   provides comprehensive website administration with subsequent promotion in search engines and daily increases in site traffic. Addressing any shortcomings made by the developers of your project is also part of our responsibilities. When we take on your website, our goal is to make it flawless; compromising on imperfections is not within our competence</p>
+                        <p>We will not only develop, populate, and SEO optimize your website but also integrate CRM systems (AmoCRM, CRM.MD, or Yclients). We will set up effective contextual advertising on Google, targeted advertising on social networks, and MyTarget. Our services include configuring efficient SMS campaigns. We will install and set up conversion tools such as Proofdy and Marquiz.
+                            <br>Check our service prices here:
+                            <a href="{{ path('app_prices') }}">Prices for IT services in Moldova.</a> </p>
                     {% endif %}
                 </div>
             </div>
