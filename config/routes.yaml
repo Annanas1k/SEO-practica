@@ -18,6 +18,10 @@ homepage:
     path: /
     controller: App\Controller\HomeController::index
 
+app_home:
+    path: /home
+    controller: App\Controller\HomeController::index
+
 aboutpage:
     path: /aboutus
     controller: App\Controller\AboutUsController::index
@@ -38,4 +42,11 @@ app_our_projects:
 app_contact_us:
     path: /contact
     controller: App\Controller\ContactUsController::index
+
+
+not_found:
+    path: /{url}
+    controller: App\Controller\LostController::notFound
+    requirements:
+        url: ".*"
 
